@@ -1,6 +1,7 @@
 package com.example.s3app;
 
 import java.io.IOException;
+/*
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.model.CreateBucketConfiguration;
@@ -11,11 +12,12 @@ import software.amazon.awssdk.services.s3.model.HeadBucketRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Exception;
 import software.amazon.awssdk.services.s3.S3Client;
+*/
 
 public class App {
 
 	public static void main(String[] args) throws IOException {
-
+		/*
 		Region region = Region.US_WEST_2;
 		S3Client s3 = S3Client.builder().region(region).build();
 
@@ -36,10 +38,12 @@ public class App {
 
 		System.out.println("Closing the connection to {S3}");
 		s3.close();
+		*/
 		System.out.println("Connection closed");
 		System.out.println("Exiting...");
 	}
 
+	/*
 	public static void tutorialSetup(S3Client s3Client, String bucketName, Region region) {
 		try {
 			s3Client.createBucket(
@@ -77,4 +81,5 @@ public class App {
 		System.out.println("Cleanup complete");
 		System.out.printf("%n");
 	}
+	*/
 }
