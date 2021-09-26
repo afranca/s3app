@@ -5,7 +5,6 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.xdesign.munro.entity.Mountain;
 
 import java.util.Collections;
 import java.util.Comparator;
