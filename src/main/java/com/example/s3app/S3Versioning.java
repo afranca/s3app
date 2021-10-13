@@ -1,6 +1,5 @@
 package com.example.s3app;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +8,6 @@ import java.util.stream.Stream;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ListVersionsRequest;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -18,27 +16,15 @@ import com.amazonaws.services.s3.model.VersionListing;
 
 public class S3Versioning {
 
+	private static final String BUCKET_NAME = "code-deploy-example";
+
 	public static void main(String[] args) {
         final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.EU_WEST_2).build();
         
-        goThroughVersionsInBucket(s3,bucketName());
+        goThroughVersionsInBucket(s3,BUCKET_NAME);
         
-        /*
-        List<Bucket> buckets = s3.listBuckets();
-        for (Bucket b : buckets) {
-        	System.out.println("--------------------------------------------");
-        	int numberOfKeys = countNumberOfKeys(s3,b.getName());
-        	System.out.println("bucketName: [" + b.getName()+"]");
-        	System.out.println("numberOfKeys: [" + numberOfKeys+"]");
-        	
-        	goThroughVersionsInBucket(s3,b.getName());
-        }
-        */
-    }
+     }
 
-	private static String bucketName() {
-		return "code-deploy-example";
-	}
     
 	private static void goThroughVersionsInBucket(AmazonS3 s3,String bucketName) {
 		ListVersionsRequest request = new ListVersionsRequest().withBucketName(bucketName);
@@ -87,10 +73,5 @@ public class S3Versioning {
         return keys;
 	}
 	
-    private static int countNumberOfKeys(AmazonS3 s3,String bucketName) {
-        ListObjectsV2Result result = s3.listObjectsV2(bucketName);
-		return result.getKeyCount();
-	}
-    	
-	
+
 }
